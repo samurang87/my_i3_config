@@ -165,16 +165,16 @@ exec --no-startup-id feh --bg-fill ~/Pictures/kopayam_sunset
 exec --no-startup-id xbindkeys
 
 # All monitors
-bindsym $mod+ctrl+a exec "bash ~/.screenlayouts/allmonitors.sh"
+bindsym $mod+ctrl+a exec "$SHELL ~/.screenlayouts/allmonitors.sh"
 
 # Docking station mode
-bindsym $mod+ctrl+d exec "bash ~/.screenlayouts/dockingstation.sh"
+bindsym $mod+ctrl+d exec "$SHELL ~/.screenlayouts/dockingstation.sh"
 
 # Notebook only mode
-bindsym $mod+ctrl+n exec "bash ~/.screenlayouts/laptoponly.sh"
+bindsym $mod+ctrl+n exec "$SHELL ~/.screenlayouts/laptoponly.sh"
 
 # Lock after timeout
-# exec --no-startup-id "bash ~/.config/i3/autolock"
+# exec --no-startup-id "$SHELL ~/.config/i3/autolock"
 
 # Lock on suspend:
 # exec --no-startup-id "xss-lock -- i3lock -e -d -c 000000"
@@ -191,3 +191,13 @@ bindsym $mod+Shift+i exec setxkbmap it
 
 # Start dropbox at startup
 exec --no-startup-id dropbox start
+
+# Start volume  and controller at startup
+exec --no-startup-id start-pulseaudio-x11
+exec --no-startup-id volumeicon
+
+# Volume keys
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
